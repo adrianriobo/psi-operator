@@ -1,7 +1,8 @@
 # psi-operator
 
-The psi-operator is a highly opinionated test workflow execution engine that knows about internal infrastructure. Is main purpose is to handle testing pipelines executions 
-on internal infrastructure based on events. Based on the same principle the outcome of the executions will be communicated based on events. 
+The psi-operator is a highly opinionated pipeline integrator. Its main purpose is to operate/manage the pipeline executions on PSI.    
+The initial use case covered by this solution is to cover a gap space for specific test results on upstream vs downstream. So this communication
+is based on aync messages, as so the initial idea is to integrate the async comunnication within the operator.  
 
 The operator is based on tekton pipelines / openshift pipelines. 
 
