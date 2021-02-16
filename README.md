@@ -6,6 +6,8 @@ is based on aync messages, as so the initial idea is to integrate the async comu
 
 The operator is based on tekton pipelines / openshift pipelines. 
 
+[![Dev environment build](https://quay.io/repository/ariobolo/dev-operator/status)](https://quay.io/repository/ariobolo/dev-operator?tab=builds)
+
 # Initial desings
 
 An overall design is represented with this diagram:
