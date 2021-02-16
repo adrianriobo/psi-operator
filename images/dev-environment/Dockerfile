@@ -13,7 +13,7 @@ ENV KIND_URL https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_V
 ENV OPERATORSDK_URL https://github.com/operator-framework/operator-sdk/releases/download/v${OPERATORSDK_VERSION}/operator-sdk-v${OPERATORSDK_VERSION}-x86_64-linux-gnu
 
 RUN dnf install -y zip ncurses git \
-    && dnf -y module disable container-tools \
+    #&& dnf -y module disable container-tools \
     && dnf -y install 'dnf-command(copr)' \
     && dnf -y copr enable rhcontainerbot/container-selinux \
     && curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8/devel:kubic:libcontainers:stable.repo \
