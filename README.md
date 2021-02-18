@@ -6,8 +6,6 @@ is based on aync messages, as so the initial idea is to integrate the async comu
 
 The operator is based on tekton pipelines / openshift pipelines. 
 
-[![Dev environment build](https://quay.io/repository/ariobolo/dev-operator/status)](https://quay.io/repository/ariobolo/dev-operator?tab=builds)
-
 # Initial desings
 
 An overall design is represented with this diagram:
@@ -16,3 +14,20 @@ An overall design is represented with this diagram:
 
 TBE
 
+# Dev environment
+
+[![Dev environment build](https://quay.io/repository/ariobolo/dev-operator/status)](https://quay.io/repository/ariobolo/dev-operator?tab=builds)
+
+To speed up the coding a container with the basic related technologies is created:
+
+```bash
+$CONTAINER_RUNTIME pull quay.io/ariobolo/dev-operator:latest
+``` 
+
+This image is based on fedora and contains:
+
+[podman](https://podman.io/)    
+[kind](https://github.com/kubernetes-sigs/kind)   
+[kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/)   
+[go](https://golang.org/)   
+[operator-sdk](https://github.com/operator-framework/operator-sdk)   
