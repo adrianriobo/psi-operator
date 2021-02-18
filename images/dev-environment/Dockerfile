@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi
+FROM quay.io/fedora/fedora:35-x86_64
 
 MAINTAINER "Adrian Riobo" <ariobolo@redhat.com>
 
@@ -12,12 +12,7 @@ ENV KUBECTL_URL https://dl.k8s.io/v${K8S_VERSION}/kubernetes-client-linux-amd64.
 ENV KIND_URL https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-linux-amd64
 ENV OPERATORSDK_URL https://github.com/operator-framework/operator-sdk/releases/download/v${OPERATORSDK_VERSION}/operator-sdk-v${OPERATORSDK_VERSION}-x86_64-linux-gnu
 
-RUN dnf install -y zip ncurses git \
-    #&& dnf -y module disable container-tools \
-    && dnf -y install 'dnf-command(copr)' \
-    && dnf -y copr enable rhcontainerbot/container-selinux \
-    && curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8/devel:kubic:libcontainers:stable.repo \
-    && dnf -y install podman \
+RUN dnf install -y zip ncurses git podman \
     && cp /usr/share/containers/containers.conf /etc/containers/containers.conf \
     && sed -i '/^# cgroup_manager = "systemd"/ a cgroup_manager = "cgroupfs"' /etc/containers/containers.conf \
     && sed -i '/^# events_logger = "journald"/ a events_logger = "file"' /etc/containers/containers.conf \
