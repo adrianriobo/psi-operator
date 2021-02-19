@@ -25,10 +25,10 @@ To speed up the coding a container with the basic related technologies is create
 sudo podman run -it --privileged --rm \
                 -v /dev/fuse:/dev/fuse:rw \
                 -v /var/lib/containers:/var/lib/containers:rw \
+                -v $PWD:/workspace:rw \
+                --workdir /workspace \
                 quay.io/ariobolo/dev-operator:latest \
                 bash
-
-
 ```
 
 To start a k8s dev/test cluster:

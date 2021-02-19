@@ -12,7 +12,7 @@ ENV KUBECTL_URL https://dl.k8s.io/v${K8S_VERSION}/kubernetes-client-linux-amd64.
 ENV KIND_URL https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-linux-amd64
 ENV OPERATORSDK_URL https://github.com/operator-framework/operator-sdk/releases/download/v${OPERATORSDK_VERSION}/operator-sdk_linux_amd64
 
-RUN dnf install -y ncurses git nano iproute \
+RUN dnf install -y ncurses git nano iproute make gcc \
     && sed -i '/^utsns="host"/ c\utsns="private"' /etc/containers/containers.conf \
     && curl -LsSo /tmp/go${GO_VERSION}.linux-amd64.tar.gz "$GO_URL" \
     && tar -C /usr/local -xzf /tmp/go${GO_VERSION}.linux-amd64.tar.gz \
