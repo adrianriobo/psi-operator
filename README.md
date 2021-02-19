@@ -4,7 +4,9 @@ The psi-operator is a highly opinionated pipeline integrator. Its main purpose i
 The initial use case covered by this solution is to cover a gap space for specific test results on upstream vs downstream. So this communication
 is based on aync messages, as so the initial idea is to integrate the async comunnication within the operator.  
 
-The operator is based on tekton pipelines / openshift pipelines. 
+The operator is based on tekton pipelines / openshift pipelines.
+
+[![psi operator build](https://quay.io/repository/ariobolo/psi-operator/status)](https://quay.io/repository/ariobolo/psi-operator?tab=builds) 
 
 # Initial desings
 
