@@ -10,7 +10,7 @@ ENV KIND_VERSION=0.10.0 \
 ENV GO_URL https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz
 ENV KUBECTL_URL https://dl.k8s.io/v${K8S_VERSION}/kubernetes-client-linux-amd64.tar.gz
 ENV KIND_URL https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-linux-amd64
-ENV OPERATORSDK_URL https://github.com/operator-framework/operator-sdk/releases/download/v${OPERATORSDK_VERSION}/operator-sdk-v${OPERATORSDK_VERSION}-x86_64-linux-gnu
+ENV OPERATORSDK_URL https://github.com/operator-framework/operator-sdk/releases/download/v${OPERATORSDK_VERSION}/operator-sdk_linux_amd64
 
 RUN dnf install -y ncurses git nano iproute \
     && sed -i '/^utsns="host"/ c\utsns="private"' /etc/containers/containers.conf \
