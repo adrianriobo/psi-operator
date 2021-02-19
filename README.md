@@ -21,10 +21,23 @@ TBE
 To speed up the coding a container with the basic related technologies is created:
 
 ```bash
-$CONTAINER_RUNTIME pull quay.io/ariobolo/dev-operator:latest
+# Kind requires rootful podman
+sudo podman run -it --privileged --rm \
+                -v /dev/fuse:/dev/fuse:rw \
+                -v /var/lib/containers:/var/lib/containers:rw \
+                quay.io/ariobolo/dev-operator:latest \
+                bash
+
+
+```
+
+To start a k8s dev/test cluster:
+
+```bash
+run-kind.sh
 ``` 
 
-This image is based on fedora and contains:
+This image is based on [podman stable](https://quay.io/repository/podman/stable?tab=info) and contains:
 
 [podman](https://podman.io/)    
 [kind](https://github.com/kubernetes-sigs/kind)   

@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora:35-x86_64
+FROM quay.io/podman/stable:latest
 
 MAINTAINER "Adrian Riobo" <ariobolo@redhat.com>
 
@@ -12,11 +12,8 @@ ENV KUBECTL_URL https://dl.k8s.io/v${K8S_VERSION}/kubernetes-client-linux-amd64.
 ENV KIND_URL https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-linux-amd64
 ENV OPERATORSDK_URL https://github.com/operator-framework/operator-sdk/releases/download/v${OPERATORSDK_VERSION}/operator-sdk-v${OPERATORSDK_VERSION}-x86_64-linux-gnu
 
-RUN dnf install -y zip ncurses git podman \
-    && cp /usr/share/containers/containers.conf /etc/containers/containers.conf \
-    && sed -i '/^# cgroup_manager = "systemd"/ a cgroup_manager = "cgroupfs"' /etc/containers/containers.conf \
-    && sed -i '/^# events_logger = "journald"/ a events_logger = "file"' /etc/containers/containers.conf \
-    && sed -i '/^driver = "overlay"/ c\driver = "vfs"' /etc/containers/storage.conf \
+RUN dnf install -y ncurses git nano iproute \
+    && sed -i '/^utsns="host"/ c\utsns="private"' /etc/containers/containers.conf \
     && curl -LsSo /tmp/go${GO_VERSION}.linux-amd64.tar.gz "$GO_URL" \
     && tar -C /usr/local -xzf /tmp/go${GO_VERSION}.linux-amd64.tar.gz \
     && rm /tmp/go${GO_VERSION}.linux-amd64.tar.gz \
@@ -29,8 +26,9 @@ RUN dnf install -y zip ncurses git podman \
     && curl -LsSo /usr/local/bin/operator-sdk $OPERATORSDK_URL \ 
     && chmod +x /usr/local/bin/operator-sdk
 
-
 ENV PATH $PATH:/usr/local/go/bin
 
+ADD scripts/ /usr/bin/
 
+RUN chmod +x -R /usr/bin
 
