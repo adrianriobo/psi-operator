@@ -1,5 +1,5 @@
 # Build the manager binary
-FROM FROM registry.access.redhat.com/ubi8/ubi-minimal as builder
+FROM registry.access.redhat.com/ubi8/ubi-minimal as builder
 
 # Go envs
 ENV GO_VERSION 1.15.8
