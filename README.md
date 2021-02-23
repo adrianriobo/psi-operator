@@ -6,6 +6,7 @@ is based on aync messages, as so the initial idea is to integrate the async comu
 
 The operator is based on tekton pipelines / openshift pipelines.
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/adrianriobo/psi-operator)](https://goreportcard.com/report/github.com/adrianriobo/psi-operator)
 [![psi operator build](https://quay.io/repository/ariobolo/psi-operator/status)](https://quay.io/repository/ariobolo/psi-operator?tab=builds) 
 
 # Initial desings
