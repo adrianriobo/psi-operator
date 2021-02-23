@@ -3,6 +3,7 @@ FROM registry.fedoraproject.org/fedora:latest as builder
 
 # Go envs
 ENV GO_VERSION 1.15.8
+ENV GO_URL https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz
 ENV PATH $PATH:/usr/local/go/bin
 
 WORKDIR /workspace
