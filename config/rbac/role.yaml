@@ -1,4 +1,3 @@
-
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -6,29 +5,12 @@ metadata:
   creationTimestamp: null
   name: manager-role
 rules:
-- apiGroups:
-  - cache.redhat.com
-  resources:
-  - memcacheds
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - cache.redhat.com
-  resources:
-  - memcacheds/finalizers
-  verbs:
-  - update
-- apiGroups:
-  - cache.redhat.com
-  resources:
-  - memcacheds/status
-  verbs:
-  - get
-  - patch
-  - update
+- apiGroups: ["cache.redhat.com"]
+  resources: ["memcacheds"]
+  verbs: ["get", "list", "create", "update", "delete", "patch", "watch"]
+- apiGroups: ["cache.redhat.com"]
+  resources: ["memcacheds/finalizers"]
+  verbs: ["update"]
+- apiGroups: ["cache.redhat.com"]
+  resources: ["memcacheds/status"]
+  verbs: ["get", "patch", "update"]
